@@ -1,12 +1,166 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>{{ name }}</title>
-  </head>
-  <body>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script type="text/javascript">
+       (function(win, lib) {
+    var doc = win.document;
+    var docEl = doc.documentElement;
+    var metaEl = doc.querySelector('meta[name="viewport"]');
+    var flexibleEl = doc.querySelector('meta[name="flexible"]');
+    var dpr = 0;
+    var scale = 0;
+    var tid;
+    var flexible = lib.flexible || (lib.flexible = {});
+    if (metaEl) {
+        console.warn("将根据已有的meta标签来设置缩放比例");
+        var match = metaEl.getAttribute("content").match(/initial\-scale=([\d\.]+)/);
+        if (match) {
+            scale = parseFloat(match[1]);
+            dpr = parseInt(1 / scale)
+        }
+    } else {
+        if (flexibleEl) {
+            var content = flexibleEl.getAttribute("content");
+            if (content) {
+                var initialDpr = content.match(/initial\-dpr=([\d\.]+)/);
+                var maximumDpr = content.match(/maximum\-dpr=([\d\.]+)/);
+                if (initialDpr) {
+                    dpr = parseFloat(initialDpr[1]);
+                    scale = parseFloat((1 / dpr).toFixed(2))
+                }
+                if (maximumDpr) {
+                    dpr = parseFloat(maximumDpr[1]);
+                    scale = parseFloat((1 / dpr).toFixed(2))
+                }
+            }
+        }
+    }
+    if (!dpr && !scale) {
+        var isAndroid = win.navigator.appVersion.match(/android/gi);
+        var isIPhone = win.navigator.appVersion.match(/iphone/gi);
+        var devicePixelRatio = win.devicePixelRatio;
+        if (isIPhone) {
+            if (devicePixelRatio >= 3 && (!dpr || dpr >= 3)) {
+                dpr = 3
+            } else {
+                if (devicePixelRatio >= 2 && (!dpr || dpr >= 2)) {
+                    dpr = 2
+                } else {
+                    dpr = 1
+                }
+            }
+        } else {
+            dpr = 1
+        }
+        scale = 1 / dpr
+    }
+    docEl.setAttribute("data-dpr", dpr);
+    if (!metaEl) {
+        metaEl = doc.createElement("meta");
+        metaEl.setAttribute("name", "viewport");
+        metaEl.setAttribute("content", "initial-scale=" + scale + ", maximum-scale=" + scale + ", minimum-scale=" + scale + ", user-scalable=no");
+        if (docEl.firstElementChild) {
+            docEl.firstElementChild.appendChild(metaEl)
+        } else {
+            var wrap = doc.createElement("div");
+            wrap.appendChild(metaEl);
+            doc.write(wrap.innerHTML)
+        }
+    }
+    function refreshRem() {
+        var width = docEl.getBoundingClientRect().width;
+        if (width / dpr > 2000) {
+            width = 2000 * dpr
+        }
+        var rem = width / 10;
+        docEl.style.fontSize = rem + "px";
+        flexible.rem = win.rem = rem
+    }
+    win.addEventListener("resize",
+    function() {
+        clearTimeout(tid);
+        tid = setTimeout(refreshRem, 300)
+    },
+    false);
+    win.addEventListener("pageshow",
+    function(e) {
+        if (e.persisted) {
+            clearTimeout(tid);
+            tid = setTimeout(refreshRem, 300)
+        }
+    },
+    false);
+    if (doc.readyState === "complete") {
+        doc.body.style.fontSize = 12 * dpr + "px"
+    } else {
+        doc.addEventListener("DOMContentLoaded",
+        function() {
+            doc.body.style.fontSize = 12 * dpr + "px"
+        },
+        false)
+    }
+    refreshRem();
+    flexible.dpr = win.dpr = dpr;
+    flexible.refreshRem = refreshRem;
+    flexible.rem2px = function(d) {
+        var val = parseFloat(d) * this.rem;
+        if (typeof d === "string" && d.match(/rem$/)) {
+            val += "px"
+        }
+        return val
+    };
+    flexible.px2rem = function(d) {
+        var val = parseFloat(d) / this.rem;
+        if (typeof d === "string" && d.match(/px$/)) {
+            val += "rem"
+        }
+        return val
+    }
+})(window, window["lib"] || (window["lib"] = {})); (function() {
+    if (!Array.prototype.includes) {
+        Object.defineProperty(Array.prototype, "includes", {
+            value: function(searchElement, fromIndex) {
+                if (this == null) {
+                    throw new TypeError('"this" is null or not defined')
+                }
+                var o = Object(this);
+                var len = o.length >>> 0;
+                if (len === 0) {
+                    return false
+                }
+                var n = fromIndex | 0;
+                var k = Math.max(n >= 0 ? n: len - Math.abs(n), 0);
+                while (k < len) {
+                    if (o[k] === searchElement) {
+                        return true
+                    }
+                    k++
+                }
+                return false
+            }
+        })
+    }
+    var head = document.getElementsByTagName("head")[0];
+    var ua = navigator.userAgent.toLowerCase();
+    if (ua.match(/MicroMessenger/i) == "micromessenger") {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "//res.wx.qq.com/open/js/jweixin-1.0.0.js";
+        head.appendChild(script)
+    }
+})();
+    </script>
+</head>
+
+<body>
     <div id="app"></div>
     <!-- built files will be auto injected -->
-  </body>
+
+
+</body>
+
 </html>
