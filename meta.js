@@ -10,7 +10,7 @@ const pkg = require('./package.json')
 
 const templateVersion = pkg.version
 
-const { addTestAnswers } = require('./scenarios')
+// const { addTestAnswers } = require('./scenarios')
 
 module.exports = {
   metalsmith: {
