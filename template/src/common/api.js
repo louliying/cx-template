@@ -17,5 +17,5 @@ export const getInfo = async (param = {}, config = {}) =>
   await ajax.get(`${baseUrl.serverB[process.env.NODE_ENV]||""}/mobile/home/getHeadData`,param, config);
 
 export const test = async (param = {}, config = {}) =>
-  await ajax.get(`${baseUrl.serverA[process.env.NODE_ENV]||""}/mobile/home/getHeadData`,param, {...config, timeout: 1000});
+  await ajax.get(`${baseUrl.serverA[process.env.NODE_ENV]||""}/mobile/home/getHeadData`,param, {config, timeout: 1000});
 
