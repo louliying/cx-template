@@ -4,47 +4,18 @@
 
 const path = require('path')
 
-console.log("当前环境"+process.env.NODE_ENV)
-var assetsPublicPath={
-  development:"",
-  dev:"",
-  sit:"333",
-  production:"123"
-}
 module.exports = {
   dev: {
-    env: require('./dev.env'),
+
+    // Paths
     assetsSubDirectory: 'static',
-    assetsPublicPath: assetsPublicPath[process.env.NODE_ENV],
-    proxyTable: {
-        '/api':{
-        target:'http://gateway.fangkuaiyi.com/',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/api': ''
-        }
-      },
-      '/serverB':{
-        target:'http://asd.asd.com1/',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/serverB': ''
-        }
-      },
-      
-      '/serverA':{
-        target:'http://asd.baidu.com1/',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/serverA': ''
-        }
-      }
-    },
+    assetsPublicPath: '/',
+    proxyTable: {},
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
-    autoOpenBrowser: true,
+    autoOpenBrowser: false,
     errorOverlay: true,
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
@@ -72,7 +43,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: assetsPublicPath[process.env.NODE_ENV],
+    assetsPublicPath: '/',
 
     /**
      * Source Maps

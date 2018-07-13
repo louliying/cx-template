@@ -3,10 +3,8 @@ const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
-const webpack = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-function resolve(dir) {
+function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
 
@@ -15,8 +13,7 @@ function resolve(dir) {
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
-    app: './src/main.js',
-    vendor: ["vue", "vue-router"]
+    app: './src/main.js'
   },
   output: {
     path: config.build.assetsRoot,
@@ -81,27 +78,5 @@ module.exports = {
     net: 'empty',
     tls: 'empty',
     child_process: 'empty'
-  },
-  plugins: [
-    new webpack.optimize.CommonsChunkPlugin('vendor'),
-    //   优化使用模块
-    new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-      compressor: {
-        warnings: false
-      }
-    }),
-    new HtmlWebpackPlugin({
-      template: 'index.html',
-      title: 'webAPP',
-      filename: 'index.html',
-      //favicon: './src/favicon.ico',
-      inject: 'body',
-      hash: true,
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true
-      }
-    })
-  ]
+  }
 }
