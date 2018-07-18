@@ -1,14 +1,14 @@
-import * as api from '@/common/api'
+import * as api from '@/common/api';
 
 export default {
-  name:"李晓龙",
-  info:{},
-  nameList:[
-    {name:"李晓龙",age:29},
-    {name:"科比",age:37}
+  name: '李晓龙',
+  info: {},
+  nameList: [
+    {name: '李晓龙', age: 29},
+    {name: '科比', age: 37}
   ],
-  getInfo(name) {
-    return new Promise((reslove,reject) => {
+  getInfo (name) {
+    return new Promise((resolve, reject) => {
       api.test({
         cartkey: '39b813508b44e73a66bfddbb0563f91e',
         demandcartkey: '39b813508b44e73a66bfddbb0563f91e',
@@ -22,13 +22,13 @@ export default {
         timestamp: '1521771333651',
         signature: '****',
         siteid: 0
-      },{
-        headers: {'test1': '123456'},
-      }).then((data)=>{
-        console.log(data.data)
-        this.info =data
-        reslove(data.data)
-      })
-    })
+      }, {
+        headers: {'test1': '123456'}
+      }).then((data) => {
+        console.log(data.data);
+        this.info = data;
+        resolve(data.data);
+      });
+    });
   }
-}
+};

@@ -4,18 +4,19 @@ const fs = require('fs')
 const {
   sortDependencies,
   installDependencies,
+  runLintFix,
   printMessage,
 } = require('./utils')
 const pkg = require('./package.json')
 
 const templateVersion = pkg.version
 
-// const { addTestAnswers } = require('./scenarios')
+const { addTestAnswers } = require('./scenarios')
 
 module.exports = {
   metalsmith: {
     // When running tests for the template, this adds answers for the selected scenario
-    // before: addTestAnswers
+    before: addTestAnswers
   },
   helpers: {
     if_or(v1, v2, options) {
@@ -50,11 +51,55 @@ module.exports = {
       type: 'string',
       message: 'Author',
     },
-
+    build: {
+      when: 'isNotTest',
+      type: 'list',
+      message: 'Vue build',
+      choices: [
+        {
+          name: 'Runtime + Compiler: recommended for most users',
+          value: 'standalone',
+          short: 'standalone',
+        },
+        {
+          name:
+            'Runtime-only: about 6KB lighter min+gzip, but templates (or any Vue-specific HTML) are ONLY allowed in .vue files - render functions are required elsewhere',
+          value: 'runtime',
+          short: 'runtime',
+        },
+      ],
+    },
     router: {
       when: 'isNotTest',
       type: 'confirm',
       message: 'Install vue-router?',
+    },
+    lint: {
+      when: 'isNotTest',
+      type: 'confirm',
+      message: '需要使用 ESLint 语法规则和代码风格来检查你的代码吗?',
+    },
+    lintConfig: {
+      when: 'isNotTest && lint',
+      type: 'list',
+      message: 'Pick an ESLint preset',
+      choices: [
+        {
+          name: 'Standard (https://github.com/standard/standard)',
+          value: 'standard',
+          short: 'Standard',
+        },
+        {
+          name: 'Airbnb (https://github.com/airbnb/javascript)',
+          value: 'airbnb',
+          short: 'Airbnb',
+        },
+        {
+          name: 'none (configure it yourself)',
+          value: 'none',
+          short: 'none',
+        },
+      ],
     },
     autoInstall: {
       when: 'isNotTest',
@@ -81,6 +126,8 @@ module.exports = {
     },
   },
   filters: {
+    '.eslintrc.js': 'lint',
+    '.eslintignore': 'lint',
     'src/router/**/*': 'router',
   },
   complete: function(data, { chalk }) {
@@ -92,7 +139,9 @@ module.exports = {
 
     if (data.autoInstall) {
       installDependencies(cwd, data.autoInstall, green)
-
+        .then(() => {
+          return runLintFix(cwd, data, green)
+        })
         .then(() => {
           printMessage(data, green)
         })
