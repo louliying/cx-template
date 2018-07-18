@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import HelloWorld from '@/components/Hello';
+import Index from '@/page/index/index';
 // import List from '@/components/List'
 const List = resolve => require(['@/components/List'], resolve);
 
@@ -12,6 +13,11 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: 'index',
+      component: Index
+    },
+    {
+      path: '/hello',
       name: 'HelloWorld',
       component: HelloWorld
     },

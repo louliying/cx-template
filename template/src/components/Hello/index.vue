@@ -1,10 +1,10 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h1>{{ lxl.name }}</h1>
-    <h2>{{this.$MD.user.name}}</h2>
-    <h2>{{this.$MD.common.title}}</h2>
-    <!--<h2>{{this.$MD.user.info}}</h2>-->
+    <h1></h1>
+    <h1></h1>
+    <h2></h2>
+    <h2></h2>
+    <!--<h2></h2>-->
     <router-link to="/list">去动态加载的路由</router-link>
     <mt-button type="default">default</mt-button>
     <mt-button type="primary">primary</mt-button>

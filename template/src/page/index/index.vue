@@ -1,11 +1,13 @@
 <template>
-    <div class="wrap"></div>
+    <div class="wrap">
+        首页
+    </div>
 </template>
 <script>
 
 </script>
 <style lang="scss">
-    @import '@/common/sass/base/common';
+    @import '../../common/sass/base/common';
     .wrap{
         @extend %wrap;
     }
