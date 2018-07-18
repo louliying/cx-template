@@ -1,4 +1,4 @@
-import * as api from '@/common/api';
+import * as api from '@/config/api';
 
 export default {
   name: '李晓龙',

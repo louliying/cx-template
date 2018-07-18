@@ -1,0 +1,106 @@
+@charset "UTF-8";
+/**
+ * Copyright (C), 2015, 上海赛可电子商务有限公司
+ * Author:   张禀奇
+ * Date:     2015-7-15
+ * Description: 弹出层
+ */
+/*确认弹出框*/
+/* line 16, sass/_dialog-confirm.scss */
+.confirmMode {
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  z-index: 34;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* line 17, sass/_dialog-confirm.scss */
+.confirmPop {
+  width: 70%;
+  position: fixed;
+  background: #fff;
+  top: 70%;
+  left: 15%;
+  z-index: 35;
+}
+/* line 24, sass/_dialog-confirm.scss */
+.confirmPop .confirmTitle {
+  text-align: center;
+  font-size: 0.3rem;
+  height: 0.68rem;
+  line-height: 0.68rem;
+  border-bottom: 1px dotted #C0C0C0;
+}
+/* line 31, sass/_dialog-confirm.scss */
+.confirmPop .confirmCon {
+  text-align: center;
+  font-size: 0.3rem;
+  padding: 0.15rem 0.3rem;
+}
+/* line 36, sass/_dialog-confirm.scss */
+.confirmPop .confirmFoot {
+  text-align: center;
+  font-size: 0.3rem;
+  height: 0.68rem;
+  line-height: 0.68rem;
+  padding-bottom: 0.1rem;
+}
+/* line 43, sass/_dialog-confirm.scss */
+.confirmPop .confirmFoot .con-buttom {
+  width: 1.29rem;
+  height: 0.47rem;
+  line-height: 0.47rem;
+  margin: 0 0.15rem;
+  font-size: 0.24rem;
+  background-color: #03A9F4;
+  border: 1px solid #03A9F4;
+  text-align: center;
+  color: #fff;
+  display: inline-block;
+  text-decoration: none;
+}
+/* line 57, sass/_dialog-confirm.scss */
+.confirmPop .confirmFoot .con-buttom-disabled {
+  border: 1px solid #cccccc;
+  background-color: #f5f5f5;
+  color: #666666;
+  text-decoration: none;
+}
+/* line 65, sass/_dialog-confirm.scss */
+.confirmPop .confirmClose {
+  display: block;
+  position: absolute;
+  top: -0.4rem;
+  right: -0.4rem;
+  background-repeat: no-repeat;
+  background-image: url('/msmallmobile/common/lib/ecar/ecar-dialogConfirm/_icons-s2e9ce3f655.png');
+  width: 0.95rem;
+  height: 0.95rem;
+  background-position: 0 0;
+  background-size: 0.95rem 0.95rem;
+}
+
+/* line 75, sass/_dialog-confirm.scss */
+.inputname-box {
+  margin: 0 auto;
+  width: 4rem;
+  padding-top: 0.1rem;
+}
+/* line 81, sass/_dialog-confirm.scss */
+.inputname-box .input-cont {
+  width: 100%;
+  min-height: 0.6rem;
+  margin-bottom: 0.1rem;
+  padding: 0.1rem;
+  box-sizing: border-box;
+}
+/* line 88, sass/_dialog-confirm.scss */
+.inputname-box .pop-msg-error {
+  font-size: 0.18rem;
+  text-align: left;
+  color: #E51C23;
+  display: none;
+}
