@@ -1,3 +1,7 @@
+import baseUrl from './proxy';
+import * as Interfaces from './interface';
+
+/*
 import ajax from './ajax';
 console.log(process.env.NODE_ENV);
 let baseUrl = {
@@ -20,3 +24,4 @@ export const getInfo = async (param = {}, config = {}) =>
 export const test = async (param = {}, config = {}) =>
   // await ajax.get(`${baseUrl.serverA[process.env.NODE_ENV] || ''}/mobile/home/getHeadData`, param, {...config, timeout: 1000});
   ajax.get(`${baseUrl.serverA[process.env.NODE_ENV] || ''}/mobile/home/getHeadData`, param, {...config, timeout: 1000});
+*/

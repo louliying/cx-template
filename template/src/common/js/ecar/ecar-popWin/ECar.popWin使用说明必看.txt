@@ -1,0 +1,60 @@
+通用弹出层使用必看
+
+
+通用弹层 css 类名添加说明：
+
+弹层 默认全屏；
+
+弹层动画方向从（弹层 最外层加class）：
+从上至下：pop-moveToBottom
+从下至上：pop-moveToTop
+从左至右：pop-moveToRight
+从右至左：pop-moveToLeft
+
+标题栏 ： pop-hd
+内容栏 ： pop-body
+按钮栏 ： pop-footer
+
+弹层 高度自适应： 最外层 加 “auto-height”类，如果有按钮栏 需要加 “has-footer”类；
+弹层 高度 半截 显示 固定高度：  在最外层 自己定义高度 如 style="height:5rem;"
+
+弹层 无标题栏： 最外层 加 “no-header”类
+弹层 无按钮栏： 最外层 加 “no-footer”类
+
+
+
+
+通用弹层 js 调用说明：
+
+// 蒙层
+configMask: true,
+// 出发弹窗元素
+triggerNode: "body",
+// 弹窗容器
+wrapNode: ".js-mui-pop-module",
+// 显示class
+showClass: "show",
+// 屏幕禁止滚动
+deviceTouch: false,
+// 取消
+cancelNode: ".js-pop-close",
+// 确定
+confirmNode: ".js-btn",
+// 蒙层
+maskNode: ".js-mui-cover",
+// 显示弹窗之前的回调函数
+showPopBeforeCallback:function(){
+},
+// 显示弹窗之后的回调函数
+showPopCallback:function(){
+},
+// 校验函数
+validatePopCallback:function(){
+  return true;
+},
+// 确定关闭弹窗之后的回调函数
+closePopCallback:function(){
+},
+// 取消关闭弹窗之后的回调函数
+cancelPopCallback:function(){
+}
