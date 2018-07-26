@@ -1,6 +1,11 @@
 import baseUrl from './proxy';
 import * as Interfaces from './interface';
 
+export {
+  baseUrl,
+  Interfaces
+};
+
 /*
 import ajax from './ajax';
 console.log(process.env.NODE_ENV);

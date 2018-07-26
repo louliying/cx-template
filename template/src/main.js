@@ -6,8 +6,8 @@ import MintUI from 'mint-ui';
 // import 'reset.css'
 // import 'mint-ui/lib/style.css'
 import router from './router';
-import {vuemaxusstore, vuemaxus} from './utils/vuemaxus';
-import maxusdata from './maxusdata';
+import {vuemaxusstore, vuemaxus} from './vuemaxus';
+import maxusdata from './utils/maxusdata';
 import 'es6-promise/auto';
 
 Vue.config.productionTip = false;

@@ -1,4 +1,5 @@
-import * as api from '@/config/index';
+// import * as Interfaces from '../../config/index';
+import * as Interfaces from '../../config/interface';
 
 export default {
   name: '李晓龙',
@@ -9,7 +10,7 @@ export default {
   ],
   getInfo (name) {
     return new Promise((resolve, reject) => {
-      api.test({
+      Interfaces.test({
         cartkey: '39b813508b44e73a66bfddbb0563f91e',
         demandcartkey: '39b813508b44e73a66bfddbb0563f91e',
         provinceid: 1,
