@@ -17,7 +17,7 @@ function resolve (dir) {
     formatter: require('eslint-friendly-formatter'),
     emitWarning: !config.dev.showEslintErrorsInOverlay
   }
-});{/lint}}
+});{{/lint}}
 
 module.exports = {
   context: path.resolve(__dirname, '../'),
