@@ -6,17 +6,18 @@
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "start": "npm run dev",
-    "lint": "eslint --ext .js,.vue src",
+    "start": "npm run dev"{{#lint}},
+    "lint": "eslint --ext .js,.vue src"{{/lint}},
     "build": "node build/build.js"
   },
   "dependencies": {
     "axios": "0.18.0",
-    "es6-promise": "4.2.4",
-    "eslint-plugin-html": "4.0.5",
+    "es6-promise": "4.2.4"{{#lint}},
+    "eslint-plugin-html": "4.0.5"{{/lint}},
     "mint-ui": "2.2.13",
-    "vue": "2.5.2",
+    "vue": "2.5.2"{{#router}},
     "vue-router": "3.0.1"
+    {{/router}}
   },
   "devDependencies": {
     "autoprefixer": "7.1.2",
