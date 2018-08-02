@@ -37,16 +37,41 @@ module.exports = {
   },
   // 扩展一个流行的风格指南，即 eslint-config-standard
   // https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style
-  extends: 'standard',
+  {{#if_eq lintConfig "standard"}}
+  extends: [
+    // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
+    // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
+    'plugin:vue/essential',
+    // https://github.com/standard/standard/blob/master/docs/RULES-en.md
+    'standard'
+  ],
+  {{/if_eq}}
+  {{#if_eq lintConfig "airbnb"}}
+  // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
+  // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
+  extends: ['plugin:vue/essential', 'airbnb-base'],
+  {{/if_eq}}
+  {{#if_eq lintConfig "none"}}
+  // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
+  // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
+  extends: ['plugin:vue/essential'],
+  {{/if_eq}}
   // required to lint *.vue files
   plugins: [
     // 此插件用来识别.html 和 .vue文件中的js代码
     'html',
-    // standard风格的依赖包
-    "standard",
-    // standard风格的依赖包
-    "promise"
+    'vue'
   ],
+  {{#if_eq lintConfig "airbnb"}}
+  // check if imports actually resolve
+  settings: {
+    'import/resolver': {
+      webpack: {
+        config: 'build/webpack.base.conf.js'
+      }
+    }
+  },
+  {{/if_eq}}
   /* * 规则的错误等级有三种：
    * 0或者"off"：关闭规则
    * 1或者"warn"：打开规则，并且作为一个警告（并不会导致检查不通过）

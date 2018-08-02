@@ -1,3 +1,4 @@
+// 定义 模板中的一些配置
 const path = require('path')
 const fs = require('fs')
 
@@ -18,6 +19,7 @@ module.exports = {
     // When running tests for the template, this adds answers for the selected scenario
     before: addTestAnswers
   },
+  // 自定义 的Handlebars 辅助函数
   helpers: {
     if_or(v1, v2, options) {
 
@@ -31,7 +33,7 @@ module.exports = {
       return templateVersion
     },
   },
-
+  // 收集用户自定义数据
   prompts: {
     name: {
       when: 'isNotTest',
@@ -125,11 +127,13 @@ module.exports = {
       ],
     },
   },
+  // 根据条件过滤文件
   filters: {
     '.eslintrc.js': 'lint',
     '.eslintignore': 'lint',
     'src/router/**/*': 'router',
   },
+  // 模板渲染完成后的回调函数， 优先于completeMessage
   complete: function(data, { chalk }) {
     const green = chalk.green
 
