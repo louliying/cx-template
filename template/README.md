@@ -1,9 +1,9 @@
-# vue移动端（上汽大通）
+# vue移动端（车享）
 vue 移动端单页项目
 
 # vue
 
-> vue+webpack+mintui 单页项目
+> vue+webpack 单页项目
 
 [![node version](https://img.shields.io/badge/node.js-%3E=_6.00-green.svg?style=flat-square)](http://nodejs.org/download/)
 # 安装启动
@@ -29,7 +29,7 @@ Node安装完成后，在命令行执行 `node -v` 查看下对应的Node版本�
 
 ``` bash
 # install dependencies
-npm install 
+npm install
 or
 cnpm install
 
@@ -44,28 +44,28 @@ npm run build
 ## Root Folder Structure
 
 
-###########目录结构描|--  
-|-- Readme.md------------------------------------->help  
-|-- src------------------------------------------->根目录  
-|--     |-- assets---------------------------------->静态资源文件    
-|--     |-- common--------------------------------->公共方法  api  工具类  
-|--     |-- components----------------------------->组件(包含基本组件和业务组件)  
-|--     |-- pages ---------------------------------->页面  有组件组成  
+###########目录结构描|--
+|-- Readme.md------------------------------------->help
+|-- src------------------------------------------->根目录
+|--     |-- assets---------------------------------->静态资源文件
+|--     |-- common--------------------------------->公共方法  api  工具类
+|--     |-- components----------------------------->组件(包含基本组件和业务组件)
+|--     |-- pages ---------------------------------->页面  有组件组成
 |--     |-- router -------------------------------->路由  (主要用一级路由)
-|--     |-- components----------------------------->组件(包含基本组件和业务组件)  
-|--     |-- store  -------------------------------->数据通信，组件共享(可以改用公司内部的，目前还没有)       
-│   └── app.vue ------------------------------->根根组件  
-├── build  ------------------------------------> webpack 配置  </br>  
-│──  config ----------------------------------->上产环境开发，环境,接口代理  
-├── dist   ------------------------------------> 打包后的目录  
-├── static ------------------------------------>第三方库  
-├── .babelrc----------------------------------->es6转es5 使用新特性,代码兼容  
-|___ package.json------------------------------>项目运行，开发依赖包等等  
-|——— .gitignore-------------------------------->git 忽略文件  
+|--     |-- components----------------------------->组件(包含基本组件和业务组件)
+|--     |-- store  -------------------------------->数据通信，组件共享(可以改用公司内部的，目前还没有)
+│   └── app.vue ------------------------------->根根组件
+├── build  ------------------------------------> webpack 配置  </br>
+│──  config ----------------------------------->上产环境开发，环境,接口代理
+├── dist   ------------------------------------> 打包后的目录
+├── static ------------------------------------>第三方库
+├── .babelrc----------------------------------->es6转es5 使用新特性,代码兼容
+|___ package.json------------------------------>项目运行，开发依赖包等等
+|——— .gitignore-------------------------------->git 忽略文件
 # 组件的封装的规范
-公司前缀Smcv+组件名字  
-组件结构 统一用 index.vue index.js  
-导入的时候 import xxx from "@/components/xxx"  
+公司前缀Smcv+组件名字
+组件结构 统一用 index.vue index.js
+导入的时候 import xxx from "@/components/xxx"
 # page的书写规范
 ``` bash
 template lang="html">
@@ -78,33 +78,33 @@ template lang="html">
 </template>
 
 <script>
-import Heador from "../public/header.vue"  
-import Footor from "../public/footer.vue"  
-import Product from "./product.vue"  
-import Life from "./life.vue"  
+import Heador from "../public/header.vue"
+import Footor from "../public/footer.vue"
+import Product from "./product.vue"
+import Life from "./life.vue"
 export default {
     components: {
-        Heador,  
-        Life,  
-        Footor,  
-        Navbar,  
+        Heador,
+        Life,
+        Footor,
+        Navbar,
     },
-    data(){  
-      return{  
-        props:{}  
-      }  
-    }  
-    created:function(){  
-      api().then((response)=>{  
-          this.props = response.xxx;  
-      });  
-    }  
-}  
+    data(){
+      return{
+        props:{}
+      }
+    }
+    created:function(){
+      api().then((response)=>{
+          this.props = response.xxx;
+      });
+    }
+}
 </script>
 
 业务逻辑，api的调用尽量放在 page里面 组件的数据来自page，实现解耦
 详情看 components/Hello/index.vue
-``` 
+```
 #配置接口代理
 ``` bash
  静态资源文件夹
@@ -133,20 +133,20 @@ export default {
           }
       }
     },
-    
+
 ```
 
 ```
   // 需要代理访问的域名
-  let baseUrl = {                      
+  let baseUrl = {
       serverB: 'http://baidu.com',
       serverA: 'http://gateway.fangkuaiyi.com',
   }
   // 配置请求接口和代理域名
-  export const getInfo = async (param = {}, config = {}) => 
+  export const getInfo = async (param = {}, config = {}) =>
         await ajax.get(`${baseUrl.serverB}/mobile/home/getHeadData`,param, config);
-        
-``` 
+
+```
 
 # store modules 的分类和使用
 
@@ -175,7 +175,7 @@ export default {
 
 
 具体使用:
-  this.$MD.user   // user 对应定义的module名 
+  this.$MD.user   // user 对应定义的module名
   this.$MD.user.name,   // user.name 对应user模块下的name属性
   this.$MD.user.getInfo // user.getInfo 对应user模块下的getInfo方法
 ```
@@ -187,34 +187,34 @@ export default {
 ## 工具
 
 #### webstorm
-* 设置vue文件   
+* 设置vue文件
     * ![](https://github.com/Edwardelric/vue2-koa2/blob/extend/share/template.png?raw=true)
 * 设置es6语法格式
-    * ![](https://github.com/Edwardelric/vue2-koa2/blob/extend/share/language.png?raw=true)    
+    * ![](https://github.com/Edwardelric/vue2-koa2/blob/extend/share/language.png?raw=true)
 * 设置缩进
-    * ![](https://github.com/Edwardelric/vue2-koa2/blob/extend/share/indent.png?raw=true)      
+    * ![](https://github.com/Edwardelric/vue2-koa2/blob/extend/share/indent.png?raw=true)
 #### sublime
 * 略
-    
-   
+
+
 ## javascript 规范
 
 #### 缩进规范：
 * 通过工具统一缩进2个空格
 
-## 
- 
+##
+
 #### 声明规范
- 
-* 变量名驼峰命名 
+
+* 变量名驼峰命名
     ```
     let myName = "";
     ```
 * 常量名大写
-    ``` 
+    ```
     const PI = Math.PI;
-    ``` 
-* 私有变量名 
+    ```
+* 私有变量名
     ```
     let _self = this;
     ```
@@ -226,21 +226,21 @@ export default {
     ```
     let str = "Hello World";
     ```
-* 类名首字母大写 
+* 类名首字母大写
     ```
     class Child extends Parent;
     ```
-    
-## 
 
-#### 编写规范   
+##
+
+#### 编写规范
 * 空格控制
     ```
     let name = "Edward";
     if (name) {
       console.log("true");
     } else {
-      console.log("false"); 
+      console.log("false");
     }
     ```
     ```
@@ -254,12 +254,12 @@ export default {
       console.log(arr[key]);
     }
     ```
-    
+
     ```
     let foo1 = function () {};
     let foo2 = function a() {};
     ```
-    
+
     ```
     // bad
     function foo(bar, baz, quux) {
@@ -268,19 +268,19 @@ export default {
     function foo(bar,
                  baz,
                  quux) {
-      ...                 
-    } 
-    // good 
+      ...
+    }
+    // good
     function foo(
       bar,
-      baz, 
+      baz,
       quux
     ) {
       ...
-    }  
-    
+    }
+
     ```
-* 对象属性省略    
+* 对象属性省略
     ```
     let name = "Edward";
     let age = 18;
@@ -289,10 +289,10 @@ export default {
       age,
       getName() {
         console.log(this.name);
-      }    
+      }
     }
     ```
-    
+
 * 箭头函数
     ```
     let cb = () => "train";
@@ -302,18 +302,18 @@ export default {
     ```
     let tmpStr = "Hello world";
     let tmp = `this is ${tmpStr}`;
-    ```       
-        
-#### 技巧简介     
+    ```
+
+#### 技巧简介
 * rest用法
     ```
     //bad:
     let original = {a: 1, b: 2};
     let copy = Object.assign(original, {c: 3});
-    //good: 
+    //good:
     let original = { a: 1, b: 2 };
     let copy = { ...original, c: 3 };
-    ```    
+    ```
 
     ```
     let obj1 = {
@@ -322,14 +322,14 @@ export default {
     }
     let obj2 = {
        name: "elric",
-       age: 17 
+       age: 17
     }
     let copy = [{...obj1}, {...obj2}];
-    ```    
-    
+    ```
+
     ```
     let dom = document.querySelectorAll("div");
-    // good 
+    // good
     let doms = Array.from(dom);
     // best
     let doms = [...dom];
@@ -339,7 +339,7 @@ export default {
     // bad
     function getName(user) {
       let firstName = user.firstName;
-      let lastName = user.lastName;    
+      let lastName = user.lastName;
     }
     // good
     function getName(user) {
@@ -347,7 +347,7 @@ export default {
     }
     // best
     function getName({firstName, lastName}) {
-      console.log(firstName, lastName);  
+      console.log(firstName, lastName);
     }
     ```
     ```
@@ -358,19 +358,19 @@ export default {
     // good
     let [first, second] = arr;
     ```
-    
+
 * 函数声明
     ```
-    // bad 
+    // bad
     function foo() {
-    
+
     }
     let foo = function() {
-    
+
     }
     // good
     let foo = function foo() {
-    
+
     }
     ```
 
@@ -379,19 +379,19 @@ export default {
     let origin;
     let cur = origin || 2;
     let cur = origin && 2;
-    ```    
-          
+    ```
+
 * 表达式
     ```
-    // bad 
-    if (test) 
+    // bad
+    if (test)
       return false;
     // good
     if (test) return false;
     // best
     if (test) {
-      return false;       
-    }  
+      return false;
+    }
     ```
 
 ## css 规范
@@ -400,27 +400,27 @@ export default {
 * 位置顺序
     ```
     position, top, right, z-index, display, float
-    ```    
+    ```
 * 大小
     ```
-    width, height, padding, margin    
+    width, height, padding, margin
     ```
 * 边框
     ```
     border, border-radius
-    ```  
+    ```
 * 背景
     ```
     background, backgorund-size
-    ```          
+    ```
 * 阴影
     ```
     box-shadow
-    ```    
+    ```
 * 文字系列
     ```
     font, line-height, letter-spacing, color, text-align,
-    ```    
+    ```
 * 其他
     ```
     animate, transition
@@ -439,7 +439,7 @@ export default {
     功能
     logo, banner, tag, message, tips, vote, friendlink, summary, search, tools, mask
     ```
-        
+
 #### 书写规范
 
 * ![](http://p87017g0w.bkt.clouddn.com/css1.png)
@@ -449,7 +449,7 @@ export default {
 * ![](http://p87017g0w.bkt.clouddn.com/css5.png)
 
 
-## 总结 
+## 总结
   1. 首先安装NODE 版本号不低于8.0
 
   2. 建立项目文件夹 test(移动单页为例)
@@ -460,21 +460,21 @@ export default {
 
   5. npm install
 
-  6. npm run dev 
+  6. npm run dev
   7. 打包运行  npm run build
- 
+
 ## 使用注意事项
 
    1. 如何增加环境
 
-    打开 package.json 在script 中增加 
+    打开 package.json 在script 中增加
      "build:pre": "cross-env NODE_ENV=pre node build/build.js",
 
     打开src - common - api.js中增加 pre环境接口访问的地址
     打开config ---index.js 增加pre环境的静态资源地址
 
-    运行命令 npm run build:pre 
- 
+    运行命令 npm run build:pre
+
 
     如果是开发阶段 设置环境 举例sit环境来说
     开发环境下 sit的静态资源指向了sit的服务器
@@ -529,9 +529,9 @@ npm bugs <packge> 查看项目bug
 
 npm prune 移除当前不在package.json中但是存在node_modules中的依赖
 ```
-   
 
-  
+
+
 
 
 

@@ -9,9 +9,9 @@ const vuemaxus = {
     const options = this.$options;
     // store injection
     if (options.vuemaxusstore) {
-      this.$MD = options.vuemaxusstore;
-    } else if (options.parent && options.parent.$MD) {
-      this.$MD = options.parent.$MD;
+      this.$CXD = options.vuemaxusstore;
+    } else if (options.parent && options.parent.$CXD) {
+      this.$CXD = options.parent.$CXD;
     }
   }
 };

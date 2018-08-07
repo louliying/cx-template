@@ -2,11 +2,11 @@
 import * as Interfaces from '../../config/interface';
 
 export default {
-  name: '李晓龙',
+  name: 'CX',
   info: {},
   nameList: [
-    {name: '李晓龙', age: 29},
-    {name: '科比', age: 37}
+    {name: 'CX1', age: 29},
+    {name: 'CX2', age: 37}
   ],
   getInfo (name) {
     return new Promise((resolve, reject) => {
