@@ -11,7 +11,7 @@
     "build:sit": "cross-env NODE_ENV=sit node build/build.js",
     "build:pre": "cross-env NODE_ENV=pre node build/build.js",
     "build:prod": "cross-env NODE_ENV=production node build/build.js",
-     "build": "cross-env NODE_ENV=production node build/build.js",
+     "build": "cross-env NODE_ENV=production node build/build.js"
   },
   "dependencies": {
     "axios": "0.18.0",
