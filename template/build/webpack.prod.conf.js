@@ -10,6 +10,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const ZipPlugin = require('zip-webpack-plugin');
+const package = require("./package.json");
 
 const env = require('../config/prod.env');
 
@@ -140,6 +142,21 @@ if (config.build.productionGzip) {
 if (config.build.bundleAnalyzerReport) {
   const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
   webpackConfig.plugins.push(new BundleAnalyzerPlugin());
+}
+if (config.build.isBuildZip) {
+  new ZipPlugin({
+        // zip包生成的目录
+        path: path.resolve(__dirname, 'dist'),
+        // zip包的名字
+        filename: package.name  + '-v.' + package.version + '-' + new Date()+ '.zip',
+        fileOptions: {
+            mtime: new Date(),
+            mode: parseInt("0100664", 8),
+            compress: true,
+            forceZip64Format: false
+        }
+
+    })
 }
 
 module.exports = webpackConfig;
