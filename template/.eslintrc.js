@@ -1,31 +1,16 @@
-/**
- *
- * 本规则中包含了所有 ESLint 规则，依据以下三条原则进行配置：
- *
- * 1. 能够帮助发现代码错误的规则，全部开启
- * 2. 配置不应该依赖于某个具体项目，而应尽可能的合理
- * 3. 帮助保持团队的代码风格统一，而不是限制开发体验
- * @fixable 表示此配置支持 --fix
- * @off 表示此配置被关闭了，并且后面说明了关闭的原因
- *
- *
- * 注意:
- * 1.这个文件只由一人维护, 其他人尽量不要改动
- * 2.请大家务必遵守规则, 提交的文件不允许出现红色波浪线
- */
-
 // https://eslint.org/docs/user-guide/configuring
 
 module.exports = {
   // 默认情况下，ESLint会在所有父级组件中寻找配置文件，一直到根目录。ESLint一旦发现配置文件中有 "root": true，它就会停止在父级目录中寻找
   root: true,
   // 对Babel解析器的包装使其与 ESLint 兼容
-  parser: 'babel-eslint',
+
   // javaScript语言选项
   parserOptions: {
     // 设置"script"（默认）或"module"
     // 代码是ECMAScript中的模块
-    sourceType: 'module'
+    sourceType: 'module',
+    parser: 'babel-eslint'
   },
   // 预设脚本运行的环境
   env: {
@@ -37,41 +22,21 @@ module.exports = {
   },
   // 扩展一个流行的风格指南，即 eslint-config-standard
   // https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style
-  {{#if_eq lintConfig "standard"}}
   extends: [
+    'eslint:recommended',
+    'plugin:vue/recommended',
     // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
     // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
-    'plugin:vue/essential',
+    // 'plugin:vue/essential',
     // https://github.com/standard/standard/blob/master/docs/RULES-en.md
     'standard'
   ],
-  {{/if_eq}}
-  {{#if_eq lintConfig "airbnb"}}
-  // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
-  // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
-  extends: ['plugin:vue/essential', 'airbnb-base'],
-  {{/if_eq}}
-  {{#if_eq lintConfig "none"}}
-  // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
-  // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
-  extends: ['plugin:vue/essential'],
-  {{/if_eq}}
   // required to lint *.vue files
   plugins: [
     // 此插件用来识别.html 和 .vue文件中的js代码
     'html',
     'vue'
   ],
-  {{#if_eq lintConfig "airbnb"}}
-  // check if imports actually resolve
-  settings: {
-    'import/resolver': {
-      webpack: {
-        config: 'build/webpack.base.conf.js'
-      }
-    }
-  },
-  {{/if_eq}}
   /* * 规则的错误等级有三种：
    * 0或者"off"：关闭规则
    * 1或者"warn"：打开规则，并且作为一个警告（并不会导致检查不通过）
@@ -81,6 +46,7 @@ module.exports = {
    * 参数2：处理方式
    * */
   rules: {
+      'vue/jsx-uses-vars': 2,
     // @fixable 必须使用单引号，禁止使用双引号
     'quotes': [
       'error',
@@ -134,6 +100,7 @@ module.exports = {
     // @off 没必要限制
     'padded-blocks': 'off',
     // 需要 分号
-    'semi':['error','always']
+    'semi':['error','always'],
+    'no-console':'off',
   }
 }
