@@ -11,8 +11,9 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const ZipPlugin = require('zip-webpack-plugin');
-const package = require("./package.json");
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
+const Package = require("../package.json");
 const env = require('../config/prod.env');
 
 const webpackConfig = merge(baseWebpackConfig, {
@@ -144,19 +145,24 @@ if (config.build.bundleAnalyzerReport) {
   webpackConfig.plugins.push(new BundleAnalyzerPlugin());
 }
 if (config.build.isBuildZip) {
-  new ZipPlugin({
-        // zip包生成的目录
-        path: path.resolve(__dirname, 'dist'),
-        // zip包的名字
-        filename: package.name  + '-v.' + package.version + '-' + new Date()+ '.zip',
-        fileOptions: {
-            mtime: new Date(),
-            mode: parseInt("0100664", 8),
-            compress: true,
-            forceZip64Format: false
-        }
-
-    })
+  webpackConfig.plugins.push(new CleanWebpackPlugin(config.build.assetsRoot));
+  let date = new Date();
+  var time = date.getFullYear() + (date.getMonth() < 10 ? '0' + (date.getMonth()+1) : (date.getMonth()+1))  + (date.getDate() < 10 ? '0' + date.getDate() : date.getDate()) + (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds());
+  webpackConfig.plugins.push(
+    new ZipPlugin({
+          // zip包生成的目录
+          path: config.build.assetsRootPath,
+          // zip包的名字
+          filename: Package.name  + '-v.' + Package.version + '-' + time + '.zip',
+          // filename: 'dist.zip',
+          fileOptions: {
+              mtime: new Date(),
+              mode: parseInt("0100664", 8),
+              compress: true,
+              forceZip64Format: false
+          }
+      })
+  );
 }
 
 module.exports = webpackConfig;
