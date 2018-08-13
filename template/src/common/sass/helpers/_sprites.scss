@@ -1,5 +1,4 @@
 @charset "UTF-8";
-// 生成图片精灵 Amanda 2017.2.22 add
 @function creatSprite($globImgPath, $spacing: 5px) {
     @return sprite-map($globImgPath, $spacing: $spacing, $layout: vertical);
 }
