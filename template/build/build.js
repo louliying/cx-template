@@ -1,8 +1,8 @@
 'use strict';
 require('./check-versions')();
 
-console.log('process.env.NODE_ENV 000000:', process.env.NODE_ENV);
-// process.env.NODE_ENV = 'production';
+// console.log('process.env.NODE_ENV 000000:', process.env.NODE_ENV);
+process.env.NODE_ENV = 'production';
 
 const ora = require('ora');
 const rm = require('rimraf');
