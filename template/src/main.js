@@ -23,14 +23,14 @@ Vue.use(vuemaxus);
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
-  {{#router}}
-  router,
-  {{/router}}
-  {{#vuex}}
-  store,
-  {{/vuex}}
-  vuemaxusstore: vuemaxusstore(maxusdata),
-  components: { App },
-  template: '<App/>'
+	el: '#app',
+	{{#router}}
+	router,
+	{{/router}}
+	{{#vuex}}
+	store,
+	{{/vuex}}
+	vuemaxusstore: vuemaxusstore(maxusdata),
+	components: { App },
+	template: '<App/>'
 });

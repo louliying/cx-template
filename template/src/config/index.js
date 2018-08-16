@@ -2,31 +2,31 @@ import baseUrl from './proxy';
 import * as Interfaces from './interface';
 
 export {
-  baseUrl,
-  Interfaces
+	baseUrl,
+	Interfaces
 };
 
 /*
 import ajax from './ajax';
 console.log(process.env.NODE_ENV);
 let baseUrl = {
-  serverB: {
-    dev: 'http://baidu.com',
-    sit: 'http://aadasd.com',
-    production: 'http://gateway.fangkuaiyi.com/'
-  },
-  serverA: {
-    dev: 'http://qq.com',
-    sit: 'http://aadasd.com',
-    production: 'http://gateway.fangkuaiyi.com/'
-  }
+	serverB: {
+		dev: 'http://baidu.com',
+		sit: 'http://aadasd.com',
+		production: 'http://gateway.fangkuaiyi.com/'
+	},
+	serverA: {
+		dev: 'http://qq.com',
+		sit: 'http://aadasd.com',
+		production: 'http://gateway.fangkuaiyi.com/'
+	}
 };
 
 export const getInfo = async (param = {}, config = {}) =>
-  // await ajax.get(`${baseUrl.serverB[process.env.NODE_ENV] || ''}/mobile/home/getHeadData`, param, config);
-  ajax.get(`${baseUrl.serverB[process.env.NODE_ENV] || ''}/mobile/home/getHeadData`, param, config);
+	// await ajax.get(`${baseUrl.serverB[process.env.NODE_ENV] || ''}/mobile/home/getHeadData`, param, config);
+	ajax.get(`${baseUrl.serverB[process.env.NODE_ENV] || ''}/mobile/home/getHeadData`, param, config);
 
 export const test = async (param = {}, config = {}) =>
-  // await ajax.get(`${baseUrl.serverA[process.env.NODE_ENV] || ''}/mobile/home/getHeadData`, param, {...config, timeout: 1000});
-  ajax.get(`${baseUrl.serverA[process.env.NODE_ENV] || ''}/mobile/home/getHeadData`, param, {...config, timeout: 1000});
+	// await ajax.get(`${baseUrl.serverA[process.env.NODE_ENV] || ''}/mobile/home/getHeadData`, param, {...config, timeout: 1000});
+	ajax.get(`${baseUrl.serverA[process.env.NODE_ENV] || ''}/mobile/home/getHeadData`, param, {...config, timeout: 1000});
 */
