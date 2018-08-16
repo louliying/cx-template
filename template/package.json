@@ -6,12 +6,12 @@
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "dev:sit": "cross-env NODE_ENV=sit  webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "dev:pre": "cross-env NODE_ENV=pre  webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "dev:prod": "cross-env NODE_ENV=production  webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev"{{#lint}},
     "lint": "eslint --ext .js,.vue src"{{/lint}},
-    "build:sit": "cross-env NODE_ENV=sit node build/build.js",
-    "build:pre": "cross-env NODE_ENV=pre node build/build.js",
-    "build:prod": "cross-env NODE_ENV=production node build/build.js",
-     "build": "cross-env NODE_ENV=production node build/build.js"
+     "build": "node build/build.js"
   },
   "dependencies": {
     "axios": "0.18.0",
