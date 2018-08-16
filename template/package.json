@@ -1,8 +1,8 @@
 {
-  "name": "cxVueTemplate",
+  "name": "{{ name }}",
   "version": "1.0.0",
-  "description": "a vue project created by cx-init",
-  "author": "cindy",
+  "description": "{{ description }}",
+  "author": "{{ author }}",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
@@ -82,7 +82,9 @@
     "webpack-merge": "4.1.0",
      "zip-webpack-plugin": "2.1.0",
      "clean-webpack-plugin":"0.1.17",
-    "cross-env": "5.2.0"
+    "cross-env": "5.2.0"{{#vuex}},
+    "vuex": "2.2.1"
+    {{/vuex}}
   },
   "engines": {
     "node": ">= 8.0.0",

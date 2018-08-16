@@ -1,9 +1,11 @@
-import user from './modules/user';
-import menu from './modules/menu';
+import Vue from 'vue';
+import Vuex from 'vuex';
+import * as actions from './actions';
+import * as getters from './getters';
 
-export default {
-  modules: {
-    user,
-    menu
-  }
-};
+Vue.use(Vuex);
+
+export default new Vuex.Store({
+    actions,
+    getters
+});

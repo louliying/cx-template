@@ -12,6 +12,10 @@ import {vuemaxusstore, vuemaxus} from './vuemaxus';
 import maxusdata from './utils/maxusdata';
 import 'es6-promise/auto';
 
+{{#vuex}}
+import store from './store';
+{{/vuex}}
+
 Vue.config.productionTip = false;
 
 Vue.use(MintUI);
@@ -21,8 +25,11 @@ Vue.use(vuemaxus);
 new Vue({
   el: '#app',
   {{#router}}
-  router,
+    router,
   {{/router}}
+  {{#vuex}}
+    store,
+  {{/vuex}}
   vuemaxusstore: vuemaxusstore(maxusdata),
   components: { App },
   template: '<App/>'

@@ -81,6 +81,11 @@ module.exports = {
       type: 'confirm',
       message: '需要使用 ESLint 语法规则和代码风格来检查你的代码吗?',
     },
+    vuex: {
+      when: 'isNotTest',
+      type: 'confirm',
+      message: '需要安装vuex吗?',
+    },
     lintConfig: {
       when: 'isNotTest && lint',
       type: 'list',
@@ -132,6 +137,7 @@ module.exports = {
     '.eslintrc.js': 'lint',
     '.eslintignore': 'lint',
     'src/router/**/*': 'router',
+    'src/store/**/*': 'vuex',
   },
   // 模板渲染完成后的回调函数， 优先于completeMessage
   complete: function(data, { chalk }) {

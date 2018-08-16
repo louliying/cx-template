@@ -1,4 +1,4 @@
-import store from '@/store';
+import store from '@/cxstore';
 store.modules.common = {
   title: '公用模块数据'
 };
