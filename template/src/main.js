@@ -25,10 +25,10 @@ Vue.use(vuemaxus);
 new Vue({
   el: '#app',
   {{#router}}
-    router,
+  router,
   {{/router}}
   {{#vuex}}
-    store,
+  store,
   {{/vuex}}
   vuemaxusstore: vuemaxusstore(maxusdata),
   components: { App },
