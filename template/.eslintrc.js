@@ -101,6 +101,8 @@ module.exports = {
     'padded-blocks': 'off',
     // 需要 分号
     'semi':['error','always'],
-    'no-console':'off',
+    "indent": 'off',
+    "no-tabs": 'off',
+    'no-console':'off'
   }
 }
