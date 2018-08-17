@@ -1,6 +1,7 @@
 import ajax from '../utils/ajax';
 import baseUrl from './proxy';
 
+
 export const getInfo = async (param = {}, config = {}) =>
 	// await ajax.get(`${baseUrl.serverB[process.env.NODE_ENV] || ''}/mobile/home/getHeadData`, param, config);
 	ajax.get(`${baseUrl.serverB[process.env.NODE_ENV] || ''}/mobile/home/getHeadData`, param, config);

@@ -1,7 +1,9 @@
 // import { request } from 'https';
-
+/* eslint-disable no-unused-vars */
 let _toString = Object.prototype.toString;
+/* eslint-disable no-unused-vars */
 let _toTrim = String.prototype.trim;
+/* eslint-disable no-unused-vars */
 let _toEach = Array.prototype.forEach;
 
 /*
@@ -220,4 +222,20 @@ export let toObject = function (arr) {
 		}
 	}
 	return res;
+};
+
+/*
+	// 从ucm的js里，读取相应key值 的value
+*/
+export let getDomainByKey = function (sKey) {
+	let envConfig = window.envConfig;
+	if (JSON.stringify(envConfig) !== '{}') {
+		if (envConfig.code === 200) {
+			let aData = envConfig.data;
+			let oTemp = aData.find((item, key) => {
+				return item.key === sKey;
+			});
+			return oTemp.value;
+		}
+	}
 };

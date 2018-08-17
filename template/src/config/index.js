@@ -1,9 +1,13 @@
 import baseUrl from './proxy';
 import * as Interfaces from './interface';
 
+import * as Util from '../utils/utils';
+let sDomain = Util.getDomainByKey('domain');
+
 export {
 	baseUrl,
-	Interfaces
+	Interfaces,
+	sDomain
 };
 
 /*
