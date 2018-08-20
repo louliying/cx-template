@@ -238,4 +238,5 @@ export let getDomainByKey = function (sKey) {
 			return oTemp.value;
 		}
 	}
+	return;
 };
