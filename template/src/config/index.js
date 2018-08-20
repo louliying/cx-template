@@ -3,7 +3,7 @@ import * as Interfaces from './interface';
 
 import * as Util from '../utils/utils';
 let sDomain = Util.getDomainByKey('domain');
-
+console.log('src/config/index 取到的sDomain值：', sDomain);
 export {
 	baseUrl,
 	Interfaces,
