@@ -12,12 +12,12 @@ import {vuemaxusstore, vuemaxus} from './vuemaxus';
 import maxusdata from './utils/maxusdata';
 import 'es6-promise/auto';
 
-import * as Config from './config/index';
-console.log('the domain from ucm is:', Config.sDomain);
-
 {{#vuex}}
 import store from './store';
 {{/vuex}}
+
+import * as Config from './config/index';
+console.log('the domain from ucm is:', Config.sDomain);
 
 Vue.config.productionTip = false;
 
