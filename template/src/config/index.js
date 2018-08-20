@@ -3,6 +3,7 @@ import * as Interfaces from './interface';
 
 import * as Util from '../utils/utils';
 let sDomain = Util.getDomainByKey('domain');
+let sDomain = Util.getDomainByKey('environment.ip.range');
 console.log('src/config/index 取到的sDomain值：', sDomain);
 export {
 	baseUrl,
