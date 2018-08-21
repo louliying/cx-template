@@ -70,7 +70,7 @@ const webpackConfig = merge(baseWebpackConfig, {
 			minify: {
 				removeComments: true,
 				collapseWhitespace: true,
-				removeAttributeQuotes: true
+				removeAttributeQuotes: false
 				// more options:
 				// https://github.com/kangax/html-minifier#options-quick-reference
 			},
@@ -80,11 +80,11 @@ const webpackConfig = merge(baseWebpackConfig, {
 		new HtmlWebpackPlugin({
 			filename: path.resolve(__dirname, '../dist/heartbeat.html'),
 			template: 'heartbeat.html',
-			inject: true,
+			inject: false,
 			minify: {
 				removeComments: true,
 				collapseWhitespace: true,
-				removeAttributeQuotes: true
+				removeAttributeQuotes: false
 				// more options:
 				// https://github.com/kangax/html-minifier#options-quick-reference
 			},
