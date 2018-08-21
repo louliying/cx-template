@@ -101,6 +101,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
 		new HtmlWebpackPlugin({
 			filename: 'index.html',
 			template: 'index.html',
+			ucmSrc:'./static/ucm.js',
 			inject: true
 		}),
 		// copy custom static assets

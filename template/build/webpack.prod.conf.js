@@ -66,7 +66,7 @@ const webpackConfig = merge(baseWebpackConfig, {
 		new HtmlWebpackPlugin({
 			filename: config.build.index,
 			template: 'index.html',
-			packagename: Package.name,
+			ucmSrc:'{chexiangdomain}/' + Package.name + '/ucm.js',
 			inject: true,
 			minify: {
 				removeComments: true,
