@@ -51,7 +51,7 @@ module.exports = {
 	assetsRoot: path.resolve(__dirname, '../dist'),
 	assetsRootPath: path.resolve(__dirname, '..'),
 	assetsSubDirectory:  Package.name,
-	assetsPublicPath: '{{chexiangdomain}}',
+	assetsPublicPath: '{chexiangdomain}',
 
 	/**
 	 * Source Maps
