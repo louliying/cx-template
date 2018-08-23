@@ -11,11 +11,9 @@ import router from './router';
 import {cxVue, cxVueStore} from './cxstore';
 import cxStoreData from './utils/cxstoredata';
 import 'es6-promise/auto';
-
 {{#vuex}}
 import store from './store';
 {{/vuex}}
-
 import * as Config from './config/index';
 console.log('the domain from ucm is:', Config.sDomain);
 
