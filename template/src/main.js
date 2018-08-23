@@ -8,8 +8,8 @@ import App from './App';
 {{#router}}
 import router from './router';
 {{/router}}
-import {cxVue, cxVueStore} from './cxstore';
-import cxStoreData from './utils/cxstoredata';
+import {cxstore, vuecx} from './vuecx';
+import cxstoredata from './utils/cxstoredata';
 import 'es6-promise/auto';
 {{#vuex}}
 import store from './store';
@@ -20,7 +20,7 @@ console.log('the domain from ucm is:', Config.sDomain);
 Vue.config.productionTip = false;
 
 // Vue.use(MintUI);
-Vue.use(cxVue);
+Vue.use(vuecx);
 
 /* eslint-disable no-new */
 new Vue({
@@ -31,7 +31,7 @@ new Vue({
 	{{#vuex}}
 	store,
 	{{/vuex}}
-	cxVueStore: cxVueStore(cxStoreData),
+	cxstore: cxstore(cxstoredata),
 	components: { App },
 	template: '<App/>'
 });

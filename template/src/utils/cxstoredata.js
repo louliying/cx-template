@@ -1,5 +1,5 @@
-import * as store from '@/cxstore';
-store.modules.common = {
-	title: '公用模块数据'
+import cxstore from '@/cxstore';
+cxstore.modules.common = {
+    title: '可以修改我-公用模块数据'
 };
-export default store.modules;
+export default cxstore.modules;
