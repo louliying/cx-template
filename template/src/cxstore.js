@@ -1,6 +1,6 @@
 import Vue from 'vue';
 
-const vuemaxus = {
+const cxVue = {
 	install (Vue) {
 		const usesInit = Vue.config._lifecycleHooks.indexOf('init') > -1;
 		Vue.mixin(usesInit ? { init: this.vuexInit } : { beforeCreate: this.vuexInit });
@@ -8,21 +8,21 @@ const vuemaxus = {
 	vuexInit () {
 		const options = this.$options;
 		// store injection
-		if (options.vuemaxusstore) {
-			this.$CXD = options.vuemaxusstore;
+		if (options.cxVueStore) {
+			this.$CXD = options.cxVueStore;
 		} else if (options.parent && options.parent.$CXD) {
 			this.$CXD = options.parent.$CXD;
 		}
 	}
 };
 
-let vuemaxusstore = (options = {}) => {
+let cxVueStore = (options = {}) => {
 	return new Vue({
 		data: options
 	});
 };
 
 export {
-	vuemaxusstore,
-	vuemaxus
+	cxVueStore,
+	cxVue
 };
