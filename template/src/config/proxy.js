@@ -1,13 +1,8 @@
-let baseUrl = {
-	serverB: {
-		dev: 'http://baidu.com',
-		sit: 'http://aadasd.com',
-		production: 'http://gateway.fangkuaiyi.com/'
-	},
+const oProxys = {
 	serverA: {
-		dev: 'http://qq.com',
-		sit: 'http://aadasd.com',
-		production: 'http://gateway.fangkuaiyi.com/'
+		sit: 'https://mgo.chexiangpre1.com/',
+		pre: 'http://aadasd.com',
+		prod: 'http://gateway.fangkuaiyi.com/'
 	}
 };
-export default baseUrl;
+module.exports = oProxys;

@@ -1,9 +1,16 @@
 'use strict';
 // Template version: 1.3.1
 // see http://vuejs-templates.github.io/webpack for documentation.
-const Package = require("../package.json");
-
 const path = require('path');
+
+const Package = require("../package.json");
+const oProxys = require('../src/config/proxy');
+
+const ENV = 'sit';
+if (process.argv[2]) {
+	const ENV = process.argv[2] || 'sit';
+}
+const sTargetProxy = oProxys.serverA[ENV];
 
 module.exports = {
   dev: {
@@ -11,7 +18,14 @@ module.exports = {
 	// Paths
 	assetsSubDirectory: 'static',
 	assetsPublicPath: '/',
-	proxyTable: {},
+	proxyTable: {
+		'/api': {
+			target: sTargetProxy,
+			changeOrigin: true,
+			proxyTimeout: 15000,
+			pathRewrite: {'^/api' : ' '}
+		}
+	},
 
 	// Various Dev Server settings
 	host: 'localhost', // can be overwritten by process.env.HOST

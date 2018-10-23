@@ -89,7 +89,8 @@ ajaxMethod.forEach((method) => {
 			/* 根据后台数据进行处理
 				*code===200   正常数据+错误数据     code!==200   网络异常等
 			*/
-				resolve(response);
+				// resolve(response);
+				resolve(response.data);
 			}).catch((err) => {
 				console.error(err);
 				reject(err);

@@ -17,6 +17,10 @@ import store from './store';
 import * as Config from './config/index';
 console.log('the domain from ucm is:', Config.sDomain);
 
+Config.Interfaces.getInfo().then((data) => {
+    console.log('接口的数据是:', data);
+});
+
 Vue.config.productionTip = false;
 
 // Vue.use(MintUI);
