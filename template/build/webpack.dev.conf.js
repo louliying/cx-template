@@ -10,7 +10,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const portfinder = require('portfinder');
 
-const HOST = process.env.HOST;
+let HOST = process.env.HOST;
 const PORT = process.env.PORT && Number(process.env.PORT);
 
 // 去读UCM配置 start
@@ -58,6 +58,20 @@ function callback(error, response, body) {
 }
 request(options, callback);
 // 去读UCM配置  end
+
+function getIPAdress(){
+    var interfaces = require('os').networkInterfaces();
+    for(var devName in interfaces){
+        var iface = interfaces[devName];
+        for(var i=0;i<iface.length;i++){
+            var alias = iface[i];
+            if(alias.family === 'IPv4' && alias.address !== '127.0.0.1' && !alias.internal){
+                return alias.address;
+            }
+        }
+    }
+}
+HOST = getIPAdress();
 
 const devWebpackConfig = merge(baseWebpackConfig, {
 	module: {
